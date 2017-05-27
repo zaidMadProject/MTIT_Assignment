@@ -92,6 +92,59 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+    // Turning On flash
+    private void turnOnFlash() {
+        if (!isFlashOn) {
+            if (camera == null || params == null) {
+                return;
+            }
+
+            params = camera.getParameters();
+            params.setFlashMode(Parameters.FLASH_MODE_TORCH);
+            camera.setParameters(params);
+            camera.startPreview();
+            isFlashOn = true;
+
+            // changing button/switch image
+            toggleButtonImage();
+        }
+
+    }
+
+
+    // Turning Off flash
+    private void turnOffFlash() {
+        if (isFlashOn) {
+            if (camera == null || params == null) {
+                return;
+            }
+
+
+            params = camera.getParameters();
+            params.setFlashMode(Parameters.FLASH_MODE_OFF);
+            camera.setParameters(params);
+            camera.stopPreview();
+            isFlashOn = false;
+
+            // changing button/switch image
+            toggleButtonImage();
+        }
+    }
+
+
+
+
+    /*
+     * Toggle switch button images
+     * changing image states to on / off
+     * */
+    private void toggleButtonImage(){
+        if(isFlashOn){
+            btnSwitch.setImageResource(R.drawable.btn_switch_on);
+        }else{
+            btnSwitch.setImageResource(R.drawable.btn_switch_off);
+        }
+    }
 
     @Override
     protected void onDestroy() {
