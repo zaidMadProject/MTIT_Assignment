@@ -1,4 +1,5 @@
-package com.example.user.androidassignment;
+package com.example.user.mtitproject;
+
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -13,8 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     ImageButton btnSwitch;
 
@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean hasFlash;
     Parameters params;
     MediaPlayer mp;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,35 +48,34 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     // closing the application
                     finish();
-                }
-            });
+            }
+        });
             alert.show();
             return;
         }
-    }
 
-    // get the camera
-    getCamera();
+        // get the camera
+        getCamera();
 
-    // displaying button image
-    toggleButtonImage();
+        // displaying button image
+        toggleButtonImage();
 
 
-    // Switch button click event to toggle flash on/off
+        // Switch button click event to toggle flash on/off
         btnSwitch.setOnClickListener(new View.OnClickListener() {
 
-        @Override
-        public void onClick(View v) {
-            if (isFlashOn) {
-                // turn off flash
-                turnOffFlash();
-            } else {
-                // turn on flash
-                turnOnFlash();
+            @Override
+            public void onClick(View v) {
+                if (isFlashOn) {
+                    // turn off flash
+                    turnOffFlash();
+                } else {
+                    // turn on flash
+                    turnOnFlash();
+                }
             }
-        }
-    });
-}
+        });
+    }
 
 
     // Get the camera
@@ -92,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+
     // Turning On flash
     private void turnOnFlash() {
         if (!isFlashOn) {
